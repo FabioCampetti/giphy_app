@@ -6,7 +6,11 @@ use Illuminate\Http\Request;
 use GuzzleHttp\Client;
 
 class GiphyController extends Controller {
-    
+
+    public function __construct() {
+        $this->middleware('auth:api');
+    }
+
     public function searchGifs(Request $request) {
         $query = $request->input('query');
         $apiKey = 'TU_CLAVE_DE_API_DE_GIPHY';
