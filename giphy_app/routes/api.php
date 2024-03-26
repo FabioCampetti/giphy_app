@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Laravel\Passport\Http\Controllers\AccessTokenController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\GiphyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +22,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::post('/oauth/token', [AccessTokenController::class, 'issueToken']);
+
+Route::post('/login', [AuthController::class, 'login']);
+
+Route::middleware('auth:api')->get('/search-gifs', [GiphyController::class, 'searchGifs']);
