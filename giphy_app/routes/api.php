@@ -26,3 +26,5 @@ Route::post('/oauth/token', [AccessTokenController::class, 'issueToken']);
 Route::post('/login', [AuthController::class, 'login']);
 
 Route::middleware('auth:api')->get('/search-gifs', [GiphyController::class, 'searchGifs']);
+
+Route::middleware('auth:api')->get('/gif-by-id', [GiphyController::class, 'getGifById']);
